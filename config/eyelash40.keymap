@@ -9,25 +9,14 @@
 
 / {
     behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <180>;
-            flavor = "tap-preferred";
-        };
-
         ltq: ltq {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LTQ";
-            bindings = <&mo>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <180>;
+    compatible = "zmk,behavior-hold-tap";
+    label = "LTQ";
+    bindings = <&mo>, <&kp>;
+    #binding-cells = <2>;
+    tapping-term-ms = <200>;
+    quick-tap-ms = <180>;
+    require-prior-idle-ms = <125>; // 新增：快速打字时立即判定为点按
         };
 
         as: auto_shift {
