@@ -19,6 +19,14 @@
     require-prior-idle-ms = <125>; // 快速打字时立即判定为点按
         };
 
+    combos {
+        compatible = "zmk,combos";
+        combo_task_manager {
+            timeout-ms = <50>; // 按下的时间差需在50ms内
+            key-positions = <13 24 35>; // 键盘上三个键的实际位置编号
+            bindings = <&kp LC(LS(ESC))>;
+        };
+
         as: auto_shift {
             compatible = "zmk,behavior-hold-tap";
             label = "AUTO_SHIFT";
@@ -36,13 +44,13 @@
 // -------------------------------------------------------------------------------------
 // | TAB |  Q  |  W  |  E  |  R  |  T  |  Y  |  U   |  I  |  O  |  P  | BSPC |
 // |    /  |  A  |  S  |  D  |  F  |  G  |  H  |  J   |  K  |  L  |    ;     |
-// |   ESC   |  Z  |  X  |  C  |  V  |  B  |  N  |  M   |  ,  |  .  |   “   |
-// | CTRL | GUI | ALT |        SPC(MO4)       |   ENTER(MO2) | LEFT | ESC | RIGHT |
+// |   LS（ESC）   |  Z  |  X  |  C  |  V  |  B  |  N  |  M   |  ,  |  .  |   “   |
+// | CTRL | GUI | ALT |        SPACE      |   ENTER(MO2) | LEFT | ESC | RIGHT |
                         bindings = <
     &kp TAB    &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BSPC
     &kp SLASH  &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp SEMI
-    &kp ESC  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA  &kp DOT    &kp SQT
-    &kp LCTRL  &kp LGUI  &kp LALT  &ltq 4 SPACE  &ltq 2 ENTER  &kp LEFT  &kp ESC  &kp RIGHT
+    &mt LSHIFT ESC  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA  &kp DOT    &kp SQT
+    &kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &ltq 2 ENTER  &kp LEFT  &kp ESC  &kp RIGHT
                         >;
                 };
 
@@ -50,26 +58,26 @@
 // ------------------------------------------------------------------------------------
 // |     |     |     |     |     |     |     |      |     |     |     |      |
 // |  ESC  |     |     |     |     |     |     |      |     |     |          |
-// |          |     |     |     |     |     |     |      |     | UP |  TO(0) |
-// |      |     |     |               |               |       |DOWN|         |
+// |    SHIFT |     |     |     |     |     |     |      |     | UP |  TO(0) |
+// |      |     |     |               |               |  LEFT  |DOWN| RIGHT   |
                         bindings = <
 &trans    &trans   &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
     &kp ESC  &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &trans  &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans  &kp UP    &tog 1
-    &trans  &trans  &trans  &trans  &trans  &trans  &kp DOWN  &trans
+    &kp LSHIFT  &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans  &kp UP    &tog 1
+    &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT
                         >;
                 };
 
                 layer_2 {
 // ----------------------------------------------------------------------------
 // |  `  | NONE |  7  |  8  |  9  |PG_UP|NONE |  [   |  ]  |  -  |  =  | DEL  |
-// |   CAP |NONE |  4  |  5  |  6  |PG_DN| NONE | UP  |MO（3）| DOWN |    \    |
-// |          |NONE |  1  |  2  |  3  |NONE |NONE | NONE |NONE |NONE | TO（1） |
+// |   CAP |NONE |  4  |  5  |  6  |PG_DN| NONE | LEFT  |MO（3）| RIGHT |    \    |
+// |   SHIFT |NONE |  1  |  2  |  3  | UP  |DOWN | NONE |NONE |NONE | Tog（1） |
 // |      |     |     |       0       |               | NONE  | NONE| NONE    |
                         bindings = <
    &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp PG_UP      &none  &kp LBKT    &kp RBKT     &kp MINUS    &kp EQUAL    &kp DEL
-    &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp PG_DN      &none  &kp UP  &mo 3  &kp DOWN    &kp BSLH
-    &trans    &none     &kp N1  &kp N2  &kp N3  &none          &none  &none   &none     &none    &tog 1
+    &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp PG_DN      &none  &kp LEFT  &mo 3  &kp RIGHT    &kp BSLH
+    &kp LSHIFT   &none     &kp N1  &kp N2  &kp N3  &kp UP      &kp DOWN  &none   &none     &none    &tog 1
     &trans    &trans    &trans  &kp N0  &trans     &none  &none   &none
                         >;
                 };
@@ -78,27 +86,15 @@
 // -----------------------------------------------------------------------------------------
 // | USB/BT | BT1 | F7 | F8 |  F9  | F10  | NONE | NONE|  NONE| NONE | NONE |  NONE  |
 // |   BT_CLR   | BT2 | F4 | F5 |  F6  |   F11   | NONE | NONE |     | NONE  |NONE  |
-// |           |  BT3  |  F1  |  F2  | F3  | F12  |NONE | NONE | NONE  | NONE | NONE |
+// |   SHIFT   |  BT3  |  F1  |  F2  | F3  | F12  |NONE | NONE | NONE  | NONE | NONE |
 // |       |     |       |       NONE        |               |  NONE | NONE | NONE |
                         bindings = <
    &out OUT_TOG  &bt BT_SEL 0  &kp F7  &kp F8  &kp F9  &kp F10      &none  &none  &none  &none  &none &none
    &bt BT_CLR   &bt BT_SEL 1  &kp F4  &kp F5  &kp F6  &kp F11      &none  &none  &trans  &none  &none
-   &trans       &bt BT_SEL 2  &kp F1  &kp F2  &kp F3  &kp F12      &none  &none  &none  &none   &none
+   &kp LSHIFT      &bt BT_SEL 2  &kp F1  &kp F2  &kp F3  &kp F12      &none  &none  &none  &none   &none
    &trans       &trans        &trans  &none  &trans     &none  &none  &none
                         >;
                 };
-                layer_4 {
-// -------------------------------------------------------------------------------------
-// | TAB |  Q  |  W  |  E  |  R  |  T  |  Y  |  U   |  I  |  O  |  P  | BSPC |
-// |    /  |  A  |  S  |  D  |  F  |  G  |  H  |  J   |  K  |  L  |    ;     |
-// |   SHFT   |  Z  |  X  |  C  |  V  |  B  |  N  |  M   |  ,  |  .  |   “   |
-// | CTRL | GUI | ALT |        SPC       |   ENTER(MO2) | LEFT | ESC | RIGHT |
-                        bindings = <
-    &kp TAB    &kp LS(Q)    &kp LS(W)    &kp LS(E)    &kp LS(R)    &kp LS(T)    &kp LS(Y)    &kp LS(U)    &kp LS(I)    &kp LS(O)    &kp LS(P）    &kp BSPC
-    &kp LS(SLASH)  &kp LS(A)    &kp LS（S）    &kp LS(D)    &kp LS(F)    &kp LS(G)    &kp LS(H)    &kp LS(J)    &kp LS(K)    &kp LS(L)    &kp LS(SEMI)
-    &kp LSHFT  &kp LS（Z）    &kp LS(X)    &kp LS(C)    &kp LS(V)    &kp LS(B)    &kp LS(N)    &kp LS(M)    &kp LS(COMMA)  &kp LS(DOT)    &kp LS(SQT)
-    &kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &ltq 2 ENTER  &kp LEFT  &kp ESC  &kp RIGHT
-                        >;
-                };
+                
         };
 };
