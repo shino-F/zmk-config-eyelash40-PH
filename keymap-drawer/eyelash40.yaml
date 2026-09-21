@@ -24,7 +24,7 @@ layers:
   - K
   - L
   - {t: ;, s: ':'}
-  - $$mdi:keyboard-esc$$
+  - {t: '$$mdi:keyboard-esc$$', h: '$$mdi:apple-keyboard-shift$$'}
   - Z
   - X
   - C
@@ -38,7 +38,7 @@ layers:
   - $$mdi:apple-keyboard-control$$
   - LGUI
   - $$mdi:apple-keyboard-option$$
-  - {t: '$$mdi:keyboard-space$$', h: '4'}
+  - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', h: '2'}
   - $$mdi:arrow-left-bold$$
   - $$mdi:keyboard-esc$$
@@ -67,7 +67,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:apple-keyboard-shift$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -83,9 +83,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:arrow-right-bold$$
   '2':
   - {t: '`', s: '~'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -106,17 +106,17 @@ layers:
   - {t: '6', s: ^}
   - PG DN
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:arrow-up-bold$$
+  - $$mdi:arrow-left-bold$$
   - '3'
-  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
   - {t: \, s: '|'}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:apple-keyboard-shift$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '1', s: '!'}
   - {t: '2', s: '@'}
   - {t: '3', s: '#'}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:arrow-up-bold$$
+  - $$mdi:arrow-down-bold$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -153,7 +153,7 @@ layers:
   - {type: held}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:apple-keyboard-shift$$
   - {h: '3', s: '$$mdi:bluetooth-connect$$'}
   - F1
   - F2
@@ -172,46 +172,3 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  '4':
-  - $$mdi:keyboard-tab$$
-  - Sft+Q
-  - Sft+W
-  - Sft+E
-  - Sft+R
-  - Sft+T
-  - Sft+Y
-  - Sft+U
-  - Sft+I
-  - Sft+O
-  - LS(P）
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - {t: Sft+/, s: 'Sft+?'}
-  - Sft+A
-  - LS（S）
-  - Sft+D
-  - Sft+F
-  - Sft+G
-  - Sft+H
-  - Sft+J
-  - Sft+K
-  - Sft+L
-  - {t: Sft+;, s: 'Sft+:'}
-  - $$mdi:apple-keyboard-shift$$
-  - LS（Z）
-  - Sft+X
-  - Sft+C
-  - Sft+V
-  - Sft+B
-  - Sft+N
-  - Sft+M
-  - {t: 'Sft+,', s: Sft+<}
-  - {t: Sft+., s: Sft+>}
-  - {t: Sft+', s: Sft+"}
-  - $$mdi:apple-keyboard-control$$
-  - LGUI
-  - $$mdi:apple-keyboard-option$$
-  - {t: '$$mdi:keyboard-space$$', type: held}
-  - {t: '$$mdi:keyboard-return$$', h: '2'}
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:keyboard-esc$$
-  - $$mdi:arrow-right-bold$$
