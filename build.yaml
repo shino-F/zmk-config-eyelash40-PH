@@ -36,6 +36,6 @@ include:
 #    artifact-name: PH-Dongle
 
 
-  - board: ph_lite
-    shield: settings_reset
-    artifact-name: Settings-Reset-all
+#  - board: ph_lite
+#    shield: settings_reset
+#    artifact-name: Settings-Reset-all
