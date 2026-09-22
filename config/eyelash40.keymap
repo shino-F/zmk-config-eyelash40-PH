@@ -3,16 +3,16 @@
  */
 
 // 调整鼠标移动的最大速度（默认值通常是 600）
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
+// #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
 
 // 调整滚轮滚动的最大速度（默认值通常是 10）
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+// #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-//#include <dt-bindings/zmk/pointing.h>
+// #include <dt-bindings/zmk/pointing.h>
 
 / {
     behaviors {
