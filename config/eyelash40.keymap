@@ -19,22 +19,20 @@
     require-prior-idle-ms = <125>; // 快速打字时立即判定为点按
         };
 
-    combos {
-        compatible = "zmk,combos";
-        combo_task_manager {
-            timeout-ms = <50>; // 按下的时间差需在50ms内
-            key-positions = <13 24 35>; // 键盘上三个键的实际位置编号
-            bindings = <&kp LC(LS(ESC))>;
-        };
+#    combos {
+#        compatible = "zmk,combos";
+#        combo_task_manager {
+#            timeout-ms = <50>; // 按下的时间差需在50ms内
+#            key-positions = <13 24 35>; // 键盘上三个键的实际位置编号
+#            bindings = <&kp LC(LS(ESC))>;
+#        };
 
-        as: auto_shift {
+       mt2: mt2 {
             compatible = "zmk,behavior-hold-tap";
-            label = "AUTO_SHIFT";
-            bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
-            tapping-term-ms = <135>;
-            quick-tap-ms = <0>;
+            tapping-term-ms = <200>;
+            hold-while-undecided;   // 按下即长按
+            bindings = <&kp>, <&kp>;
         };
     };
         keymap {
@@ -45,12 +43,12 @@
 // | TAB |  Q  |  W  |  E  |  R  |  T  |  Y  |  U   |  I  |  O  |  P  | BSPC |
 // |    /  |  A  |  S  |  D  |  F  |  G  |  H  |  J   |  K  |  L  |    ;     |
 // |   LS（ESC）   |  Z  |  X  |  C  |  V  |  B  |  N  |  M   |  ,  |  .  |   “   |
-// | CTRL | GUI | ALT |        SPACE      |   ENTER(MO2) | LEFT | ESC | RIGHT |
+// | CTRL(HOME) | GUI | ALT(END) |        SPACE      |   ENTER(MO2) | PG_UP | PG_DN | MO(4) |
                         bindings = <
     &kp TAB    &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BSPC
     &kp SLASH  &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp SEMI
     &mt LSHIFT ESC  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA  &kp DOT    &kp SQT
-    &kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &ltq 2 ENTER  &kp LEFT  &kp ESC  &kp RIGHT
+    &mt2 LCTRL HOME  &kp LGUI  &mt LALT END  &kp SPACE  &ltq 2 ENTER  &kp PG_UP  &kp PG_DN  &mo 4
                         >;
                 };
 
@@ -59,12 +57,12 @@
 // |     |     |     |     |     |     |     |      |     |     |     |      |
 // |  ESC  |     |     |     |     |     |     |      |     |     |          |
 // |    SHIFT |     |     |     |     |     |     |      |     | UP |  TO(0) |
-// |      |     |     |               |               |  LEFT  |DOWN| RIGHT   |
+// |CTRL |     | ALT |               |               |  LEFT  |DOWN| RIGHT   |
                         bindings = <
 &trans    &trans   &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
     &kp ESC  &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
     &kp LSHIFT  &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans  &kp UP    &tog 1
-    &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT
+    &kp LCTRL  &trans  &kp LALT  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT
                         >;
                 };
 
@@ -73,12 +71,12 @@
 // |  `  | NONE |  7  |  8  |  9  |PG_UP|NONE |  [   |  ]  |  -  |  =  | DEL  |
 // |   CAP |NONE |  4  |  5  |  6  |PG_DN| NONE | LEFT  |MO（3）| RIGHT |    \    |
 // |   SHIFT |NONE |  1  |  2  |  3  | UP  |DOWN | NONE |NONE |NONE | Tog（1） |
-// |      |     |     |       0       |               | NONE  | NONE| NONE    |
+// |CTRL |     | ALT |       0       |               | NONE  | NONE| NONE    |
                         bindings = <
    &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp PG_UP      &none  &kp LBKT    &kp RBKT     &kp MINUS    &kp EQUAL    &kp DEL
     &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp PG_DN      &none  &kp LEFT  &mo 3  &kp RIGHT    &kp BSLH
     &kp LSHIFT   &none     &kp N1  &kp N2  &kp N3  &kp UP      &kp DOWN  &none   &none     &none    &tog 1
-    &trans    &trans    &trans  &kp N0  &trans     &none  &none   &none
+    &kp LCTRL  &trans  &kp LALT  &kp N0  &trans     &none  &none   &none
                         >;
                 };
 
@@ -87,14 +85,26 @@
 // | USB/BT | BT1 | F7 | F8 |  F9  | F10  | NONE | NONE|  NONE| NONE | NONE |  NONE  |
 // |   BT_CLR   | BT2 | F4 | F5 |  F6  |   F11   | NONE | NONE |     | NONE  |NONE  |
 // |   SHIFT   |  BT3  |  F1  |  F2  | F3  | F12  |NONE | NONE | NONE  | NONE | NONE |
-// |       |     |       |       NONE        |               |  NONE | NONE | NONE |
+// |CTRL |     | ALT |       NONE        |               |  NONE | NONE | NONE |
                         bindings = <
    &out OUT_TOG  &bt BT_SEL 0  &kp F7  &kp F8  &kp F9  &kp F10      &none  &none  &none  &none  &none &none
    &bt BT_CLR   &bt BT_SEL 1  &kp F4  &kp F5  &kp F6  &kp F11      &none  &none  &trans  &none  &none
    &kp LSHIFT      &bt BT_SEL 2  &kp F1  &kp F2  &kp F3  &kp F12      &none  &none  &none  &none   &none
-   &trans       &trans        &trans  &none  &trans     &none  &none  &none
+  &kp LCTRL  &trans  &kp LALT  &none  &trans     &none  &none  &none
                         >;
                 };
-                
+                layer_4 {
+// -------------------------------------------------------------------------------------
+// |NONE|NONE|  W  |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
+// |NONE|  A  |  S  |  D  |NONE|NONE|NONE|NONE|NONE|NONE|NONE|
+// |  RCLK |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
+// | NONE|NONE|NONE|  LCLK    |NONE|SCRL_UP|SCRL_DN|    |
+                        bindings = <
+    &none  &none  &mmv MOVE_UP  &none  &none  &none        &none  &none  &none  &none  &none  &none
+    &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none        &none  &none  &none  &none  &none
+    &mkp RCLK  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none
+    &none  &none  &none  &mkp LCLK  &none  &msc SCRL_UP  &msc SCRL_DOWN  &trans
+>;
+                };
         };
 };
