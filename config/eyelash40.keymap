@@ -39,8 +39,9 @@
         compatible = "zmk,combos";
         combo_0 {
             timeout-ms = <50>; // 按下的时间差需在50ms内
-            key-positions = <13 24 35>; // 键盘上三个键的实际位置编号
+            key-positions = <12 23 34>; // 键盘上三个键的实际位置编号
             bindings = <&kp LC(LS(ESC))>;
+            layers = <0>;
         };
     };
 
@@ -105,15 +106,15 @@
 
                 layer_4 {
 // -------------------------------------------------------------------------------------
-// |NONE|NONE|NONE|  R  |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
+// |NONE|NONE| SCRL_UP |  R  |SCRL_DN|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
 // |NONE|NONE|  S  |  D  |  F  |NONE|NONE|NONE|NONE|NONE|NONE|
-// |  RCLK |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
-// | NONE|NONE|NONE|  LCLK    |NONE|SCRL_UP|    |SCRL_DN|
+// |  NONE |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
+// | CTRL|NONE|ALT|  LCLK    |NONE|SCRL_LCLK|    |SCRL_RCLK|
                         bindings = <
-    &none  &none  &none  &mmv MOVE_UP  &none  &none        &none  &none  &none  &none  &none  &none
+    &none  &none  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOW N  &none        &none  &none  &none  &none  &none  &none
     &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none        &none  &none  &none  &none  &none
-    &mkp RCLK  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none
-    &none  &none  &none  &mkp LCLK  &none  &msc LCLK  &trans   &msc RCLK
+    &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none
+    &kp LCTRL  &none  &kp LALT  &mkp LCLK  &none  &msc LCLK  &trans   &msc RCLK
                         >;
                 };
         };
