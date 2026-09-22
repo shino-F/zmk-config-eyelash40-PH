@@ -58,7 +58,7 @@
     &kp TAB    &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BSPC
     &kp SLASH  &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp SEMI
     &mt LSHIFT ESC  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA  &kp DOT    &kp SQT
-    &mt_home LCTRL HOME  &kp LGUI  &mt LALT END  &kp SPACE  &ltq 2 ENTER  &kp PG_UP  &mo 4  &PG_DN
+    &mt_home LCTRL HOME  &kp LGUI  &mt LALT END  &kp SPACE  &ltq 2 ENTER  &kp PG_UP  &mo 4  &kp PG_DN
                         >;
                 };
 
@@ -111,10 +111,10 @@
 // |  NONE |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
 // | CTRL|NONE|ALT|  LCLK    |NONE|SCRL_LCLK|    |SCRL_RCLK|
                         bindings = <
-    &none  &none  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOW N  &none        &none  &none  &none  &none  &none  &none
+    &none  &none  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOWN  &none        &none  &none  &none  &none  &none  &none
     &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none        &none  &none  &none  &none  &none
     &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none
-    &kp LCTRL  &none  &kp LALT  &mkp LCLK  &none  &msc LCLK  &trans   &msc RCLK
+    &kp LCTRL  &none  &kp LALT  &mkp LCLK  &none  &mkp LCLK  &trans   &mkp RCLK
                         >;
                 };
         };
