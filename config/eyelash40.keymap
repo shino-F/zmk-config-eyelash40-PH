@@ -26,13 +26,13 @@
     require-prior-idle-ms = <125>; // 快速打字时立即判定为点按
         };
 
-#    combos {
-#        compatible = "zmk,combos";
-#        combo_task_manager {
-#            timeout-ms = <50>; // 按下的时间差需在50ms内
-#            key-positions = <13 24 35>; // 键盘上三个键的实际位置编号
-#            bindings = <&kp LC(LS(ESC))>;
-#        };
+    combos {
+        compatible = "zmk,combos";
+        combo_task_manager {
+            timeout-ms = <50>; // 按下的时间差需在50ms内
+            key-positions = <13 24 35>; // 键盘上三个键的实际位置编号
+            bindings = <&kp LC(LS(ESC))>;
+        };
 
        mt2: mt2 {
             compatible = "zmk,behavior-hold-tap";
