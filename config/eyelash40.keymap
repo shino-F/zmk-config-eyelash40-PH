@@ -2,44 +2,42 @@
  * SPDX-License-Identifier: MIT
  */
 
-// 调整鼠标移动的最大速度（默认值通常是 600）
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
-
-// 调整滚轮滚动的最大速度（默认值通常是 10）
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
 
 / {
     behaviors {
-        ltq: ltq {
-    compatible = "zmk,behavior-hold-tap";
-    label = "LTQ";
-    bindings = <&mo>, <&kp>;
-    #binding-cells = <2>;
-    tapping-term-ms = <200>;
-    quick-tap-ms = <180>;
-    require-prior-idle-ms = <125>; // 快速打字时立即判定为点按
-        };
-
-    combos {
-        compatible = "zmk,combos";
-        combo_task_manager {
-            timeout-ms = <50>; // 按下的时间差需在50ms内
-            key-positions = <13 24 35>; // 键盘上三个键的实际位置编号
-            bindings = <&kp LC(LS(ESC))>;
-        };
-
-       mt2: mt2 {
+        hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            bindings = <&kp>, <&kp>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            hold-while-undecided;   // 按下即长按
+            quick-tap-ms = <180>;
+            flavor = "tap-preferred";
+        };
+
+        ltq: ltq {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LTQ";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <180>;
+        };
+
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_SHIFT";
             bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <135>;
+            quick-tap-ms = <0>;
         };
     };
         keymap {
@@ -47,71 +45,44 @@
 
                 layer_0 {
 // -------------------------------------------------------------------------------------
-// | TAB |  Q  |  W  |  E  |  R  |  T  |  Y  |  U   |  I  |  O  |  P  | BSPC |
-// |    /  |  A  |  S  |  D  |  F  |  G  |  H  |  J   |  K  |  L  |    ;     |
-// |   LS（ESC）   |  Z  |  X  |  C  |  V  |  B  |  N  |  M   |  ,  |  .  |   “   |
-// | CTRL(HOME) | GUI | ALT(END) |        SPACE      |   ENTER(MO2) | PG_UP | PG_DN | MO(4) |
+// | ESC |  Q  |  W  |  E  |  R  |  T  |  Y  |  U   |  I  |  O  |  P  | BKSP |
+// | TAB |  A  |  S  |  D  |  F  |  G  |  H  |  J   |  K  |  L  |   ENTER    |
+// |   SHFT   |  Z  |  X  |  C  |  V  |  B  |  N  |  M   |  /  |  UP  |   MO(2) |
+// | CTRL | GUI | ALT |        SPACE     |   SPACE(MO1) | LEFT | DOWN | RIGHT |
                         bindings = <
-    &kp TAB    &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BSPC
-    &kp SLASH  &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp SEMI
-    &mt LSHIFT ESC  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA  &kp DOT    &kp SQT
-    &mt2 LCTRL HOME  &kp LGUI  &mt LALT END  &kp SPACE  &ltq 2 ENTER  &kp PG_UP  &kp PG_DN  &mo 4
+    &kp ESC    &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BSPC
+    &kp TAB  &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp ENTER
+    &kp LSHFT  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp SLASH  &kp UP    &mo 2
+    &kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &ltq 1 SPACE  &kp LEFT  &kp DOWN  &kp RIGHT
                         >;
                 };
 
                 layer_1 {
 // ------------------------------------------------------------------------------------
-// |     |     |     |     |     |     |     |      |     |     |     |      |
-// |  ESC  |     |     |     |     |     |     |      |     |     |          |
-// |    SHIFT |     |     |     |     |     |     |      |     | UP |  TO(0) |
-// |CTRL |     | ALT |               |               |  LEFT  |DOWN| RIGHT   |
+// | ` |  1  |  2  |  3  |  4  |  5  |  6  |  7   |  8  |  9  |  0  | DEL |
+// | CAPS |  USB  | BT_CLR  |  BT1  |  BT2  |  BT3  |  -  |  =  |  [   |  ]  |   \    |
+// |      |  none  | none  | none | none |  ;  |  '  |  ,   |  .  |  PG_UP  |  RSHIFT |
+// |      |     |     |                  |           | HOME | PG_DN | END |
                         bindings = <
-&trans    &trans   &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &kp ESC  &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &kp LSHIFT  &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans  &kp UP    &tog 1
-    &kp LCTRL  &trans  &kp LALT  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT
+    &kp GRAVE   &kp N1  &kp N2  &kp N3    &kp N4  &kp N5  &kp N6    &kp N7  &kp N8  &kp N9    &kp N0    &kp DEL
+    &kp CAPS  &out OUT_TOG    &bt BT_CLR    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &kp MINUS    &kp EQUAL    &kp LBKT    &kp RBKT    &kp BSLH
+    &trans  &none    &none    &none    &none    &kp SEMI    &kp SQT    &kp COMMA  &kp DOT  &kp PG_UP    &kp RSHFT
+    &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp PG_DN  &kp END
                         >;
                 };
 
                 layer_2 {
 // ----------------------------------------------------------------------------
-// |  `  | NONE |  7  |  8  |  9  |PG_UP|NONE |  [   |  ]  |  -  |  =  | DEL  |
-// |   CAP |NONE |  4  |  5  |  6  |PG_DN| NONE | LEFT  |MO（3）| RIGHT |    \    |
-// |   SHIFT |NONE |  1  |  2  |  3  | UP  |DOWN | NONE |NONE |NONE | Tog（1） |
-// |CTRL |     | ALT |       0       |               | NONE  | NONE| NONE    |
+// |  `  | F1 | F2 | F3 |  F4 |  F5 |  F6 | F7 | F8 | F9 | F10 |    |
+// |     | VOL- | MUTE | VOL+ | none  | none | 5  | 6  | 7 | 8 |  9 |
+// |     | PRVS | PLAY |NEXT | NONE  |  0 |  1 | 2 | 3 | 4 |   |
+// |     |    |    |    |   SPACE  | RAIT | F11| F12 |
                         bindings = <
-   &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp PG_UP      &none  &kp LBKT    &kp RBKT     &kp MINUS    &kp EQUAL    &kp DEL
-    &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp PG_DN      &none  &kp LEFT  &mo 3  &kp RIGHT    &kp BSLH
-    &kp LSHIFT   &none     &kp N1  &kp N2  &kp N3  &kp UP      &kp DOWN  &none   &none     &none    &tog 1
-    &kp LCTRL  &trans  &kp LALT  &kp N0  &trans     &none  &none   &none
+   &kp GRAVE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9    &kp F10    &trans
+    &trans  &kp C_VOL_DN     &kp C_MUTE  &kp C_VOL_UP  &none  &none      &kp KP_N5  &kp KP_N6  &kp KP_N7  &kp KP_N8    &kp KP_N9
+    &trans    &kp C_PREV     &kp C_PLAY_PAUSE  &kp C_NEXT  &none  &kp KP_N0   &kp KP_N1  &kp KP_N2   &kp KP_N3     &kp KP_N4    &trans
+    &trans    &trans    &trans  &trans  &kp SPACE     &kp RALT  &kp F11   &kp F12
                         >;
-                };
-
-                layer_3 {
-// -----------------------------------------------------------------------------------------
-// | USB/BT | BT1 | F7 | F8 |  F9  | F10  | NONE | NONE|  NONE| NONE | NONE |  NONE  |
-// |   BT_CLR   | BT2 | F4 | F5 |  F6  |   F11   | NONE | NONE |     | NONE  |NONE  |
-// |   SHIFT   |  BT3  |  F1  |  F2  | F3  | F12  |NONE | NONE | NONE  | NONE | NONE |
-// |CTRL |     | ALT |       NONE        |               |  NONE | NONE | NONE |
-                        bindings = <
-   &out OUT_TOG  &bt BT_SEL 0  &kp F7  &kp F8  &kp F9  &kp F10      &none  &none  &none  &none  &none &none
-   &bt BT_CLR   &bt BT_SEL 1  &kp F4  &kp F5  &kp F6  &kp F11      &none  &none  &trans  &none  &none
-   &kp LSHIFT      &bt BT_SEL 2  &kp F1  &kp F2  &kp F3  &kp F12      &none  &none  &none  &none   &none
-  &kp LCTRL  &trans  &kp LALT  &none  &trans     &none  &none  &none
-                        >;
-                };
-                layer_4 {
-// -------------------------------------------------------------------------------------
-// |NONE|NONE|  W  |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
-// |NONE|  A  |  S  |  D  |NONE|NONE|NONE|NONE|NONE|NONE|NONE|
-// |  RCLK |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
-// | NONE|NONE|NONE|  LCLK    |NONE|SCRL_UP|SCRL_DN|    |
-                        bindings = <
-    &none  &none  &mmv MOVE_UP  &none  &none  &none        &none  &none  &none  &none  &none  &none
-    &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none        &none  &none  &none  &none  &none
-    &mkp RCLK  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none
-    &none  &none  &none  &mkp LCLK  &none  &msc SCRL_UP  &msc SCRL_DOWN  &trans
->;
                 };
         };
 };
