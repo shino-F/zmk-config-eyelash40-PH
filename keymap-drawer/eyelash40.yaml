@@ -42,7 +42,7 @@ layers:
   - {t: '$$mdi:keyboard-return$$', h: '2'}
   - PG UP
   - '4'
-  - '&PG_DN'
+  - PG DN
   '1':
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -177,7 +177,7 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:pan-up$$
   - {t: '$$mdi:menu-up$$', s: '$$mdi:mouse$$'}
-  - '&msc SCRL_DOW N'
+  - $$mdi:pan-down$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -212,9 +212,9 @@ layers:
   - $$mdi:apple-keyboard-option$$
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - '&msc LCLK'
+  - $$mdi:mouse-left-click-outline$$
   - {type: held}
-  - '&msc RCLK'
+  - $$mdi:mouse-right-click-outline$$
 combos:
 - p: [12, 23, 34]
   k: Ctl+Sft+$$mdi:keyboard-esc$$
