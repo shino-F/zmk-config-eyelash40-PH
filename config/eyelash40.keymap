@@ -78,14 +78,14 @@
 
                 layer_2 {
 // ----------------------------------------------------------------------------
-// |  `  | NONE |  7  |  8  |  9  |PG_UP|NONE |  [   |  ]  |  -  |  =  | DEL  |
-// |   CAP |NONE |  4  |  5  |  6  |PG_DN| NONE | LEFT  |MO（3）| RIGHT |    \    |
-// |   SHIFT |NONE |  1  |  2  |  3  | UP  |DOWN | NONE |NONE |NONE | Tog（1） |
+// |  `  | NONE |  7  |  8  |  9  | UP |NONE |  [   |  ]  |  -  |  =  | DEL  |
+// |   CAP |NONE |  4  |  5  |  6  |DOWN| NONE | LEFT  |MO（3）| RIGHT |    \    |
+// |   SHIFT |NONE |  1  |  2  |  3  |PG_UP|PG_DN| NONE |NONE |NONE | Tog（1） |
 // |CTRL |     | ALT |       0       |               | NONE  | NONE| NONE    |
                         bindings = <
-   &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp PG_UP      &none  &kp LBKT    &kp RBKT     &kp MINUS    &kp EQUAL    &kp DEL
-    &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp PG_DN      &none  &kp LEFT  &mo 3  &kp RIGHT    &kp BSLH
-    &kp LSHIFT   &none     &kp N1  &kp N2  &kp N3  &kp UP      &kp DOWN  &none   &none     &none    &tog 1
+   &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp UP      &none  &kp LBKT    &kp RBKT     &kp MINUS    &kp EQUAL    &kp DEL
+    &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp DOWN      &none  &kp LEFT  &mo 3  &kp RIGHT    &kp BSLH
+    &kp LSHIFT   &none     &kp N1  &kp N2  &kp N3  &kp PG_UP    &kp PG_DN  &none   &none     &none    &tog 1
     &kp LCTRL  &trans  &kp LALT  &kp N0  &trans     &none  &none   &none
                         >;
                 };
