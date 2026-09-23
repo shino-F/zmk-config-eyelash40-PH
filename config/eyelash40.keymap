@@ -3,7 +3,7 @@
  */
 
 // 调整鼠标移动的最大速度（默认值通常是 600）
- #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
+ #define ZMK_POINTING_DEFAULT_MOVE_VAL 800
 
 // 调整滚轮滚动的最大速度（默认值通常是 10）
  #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
