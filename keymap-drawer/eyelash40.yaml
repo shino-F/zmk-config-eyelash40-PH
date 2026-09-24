@@ -24,7 +24,7 @@ layers:
   - K
   - L
   - {t: ;, s: ':'}
-  - {t: '$$mdi:keyboard-esc$$', h: '$$mdi:apple-keyboard-shift$$'}
+  - $$mdi:apple-keyboard-shift$$
   - Z
   - X
   - C
@@ -41,7 +41,7 @@ layers:
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', h: '2'}
   - PG UP
-  - '4'
+  - {t: '$$mdi:keyboard-esc$$', h: '4'}
   - PG DN
   '1':
   - {t: '$$mdi:transfer$$', type: trans}
@@ -67,7 +67,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - $$mdi:apple-keyboard-shift$$
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -110,7 +110,7 @@ layers:
   - '3'
   - $$mdi:arrow-right-bold$$
   - {t: \, s: '|'}
-  - $$mdi:apple-keyboard-shift$$
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '1', s: '!'}
   - {t: '2', s: '@'}
@@ -153,7 +153,7 @@ layers:
   - {type: held}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:apple-keyboard-shift$$
+  - {t: '$$mdi:transfer$$', type: trans}
   - {h: '3', s: '$$mdi:bluetooth-connect$$'}
   - F1
   - F2
@@ -196,6 +196,7 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:mouse-right-click-outline$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -207,14 +208,13 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:apple-keyboard-control$$
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:apple-keyboard-option$$
-  - $$mdi:mouse-left-click-outline$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:mouse-left-click-outline$$
   - {type: held}
-  - $$mdi:mouse-right-click-outline$$
+  - $$mdi:apple-keyboard-control$$
 combos:
 - p: [12, 23, 34]
   k: Ctl+Sft+$$mdi:keyboard-esc$$
