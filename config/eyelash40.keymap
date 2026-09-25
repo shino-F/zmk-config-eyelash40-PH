@@ -108,12 +108,12 @@
 // -------------------------------------------------------------------------------------
 // |NONE|NONE| SCRL_UP |  R  |SCRL_DN|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
 // |NONE|NONE|  S  |  D  |  F  |NONE|NONE|NONE|NONE|NONE|NONE|
-// |  RCLK |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
+// |  RCLK |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|SHIFT|
 // |NONE|NONE|NONE|  LCLK    |NONE| ALT |    |CTRL|
                         bindings = <
     &none  &none  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOWN  &none        &none  &none  &none  &none  &none  &none
     &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none        &none  &none  &none  &none  &none
-    &mkp RCLK  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none
+    &mkp RCLK  &none  &none  &none  &none  &none        &none  &none  &none  &none  &kp LSHIFT
     &none  &none  &none  &mkp LCLK  &none  &kp LALT  &trans   &kp LCTRL
                         >;
                 };
