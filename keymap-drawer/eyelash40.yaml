@@ -92,10 +92,10 @@ layers:
   - {t: '7', s: '&'}
   - {t: '8', s: '*'}
   - {t: '9', s: (}
-  - $$mdi:arrow-up-bold$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '[', s: '{'}
+  - PG UP
+  - '&LBKT'
   - {t: ']', s: '}'}
+  - $$mdi:arrow-up-bold$$
   - {t: '-', s: _}
   - {t: '=', s: +}
   - $$mdi:backspace-reverse-outline$$
@@ -104,10 +104,10 @@ layers:
   - {t: '4', s: $}
   - {t: '5', s: '%'}
   - {t: '6', s: ^}
-  - $$mdi:arrow-down-bold$$
+  - PG DN
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:arrow-left-bold$$
-  - '3'
+  - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-right-bold$$
   - {t: \, s: '|'}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -115,11 +115,11 @@ layers:
   - {t: '1', s: '!'}
   - {t: '2', s: '@'}
   - {t: '3', s: '#'}
-  - PG UP
-  - PG DN
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - none
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: ., s: '>'}
   - {t: '1', h: toggle}
   - $$mdi:apple-keyboard-control$$
   - {t: '$$mdi:transfer$$', type: trans}
@@ -149,9 +149,9 @@ layers:
   - F6
   - F11
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:volume-high$$
-  - {type: held}
   - $$mdi:volume-low$$
+  - {type: held}
+  - $$mdi:volume-high$$
   - $$mdi:volume-off$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {h: '3', s: '$$mdi:bluetooth-connect$$'}
@@ -219,3 +219,6 @@ combos:
 - p: [12, 23, 34]
   k: Ctl+Sft+$$mdi:keyboard-esc$$
   l: ['0']
+- p: [20, 38]
+  k: '3'
+  l: ['0', '1']
