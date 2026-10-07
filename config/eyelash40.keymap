@@ -91,7 +91,7 @@
                         bindings = <
    &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp PG_UP      &kp LBKT  &kp RBKT    &kp UP     &kp MINUS    &kp EQUAL    &kp DEL
     &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp PG_DN      &none  &kp LEFT  &kp DOWN  &kp RIGHT    &kp BSLH
-    &trans   &none     &kp N1  &kp N2  &kp N3  &none    &kp KP_DOT  &none   &none     &none    &tog 1
+    &trans   &none     &kp N1  &kp N2  &kp N3  &kp KP_DOT  &none &none   &none     &none    &tog 1
     &kp LCTRL  &trans  &kp LALT  &kp N0  &trans     &none  &none   &none
                         >;
                 };
