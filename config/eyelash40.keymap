@@ -86,12 +86,12 @@
 // ----------------------------------------------------------------------------
 // |  `  | NONE |  7  |  8  |  9  | PG_UP |  [   |  ]  |  UP  |  -  |  =  | DEL  |
 // |   CAP |NONE |  4  |  5  |  6  |PG_DN| NONE | LEFT  |DOWN| RIGHT |    \    |
-// |    |NONE |  1  |  2  |  3  |NONE|NONE| NONE |NONE |  .  | Tog（1） |
+// |    |NONE |  1  |  2  |  3  |  .  |NONE| NONE |NONE |NONE| Tog（1） |
 // |CTRL |     | ALT |       0       |               | NONE  | NONE| NONE    |
                         bindings = <
-   &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp PG_UP      &LBKT  &kp RBKT    &kp UP     &kp MINUS    &kp EQUAL    &kp DEL
+   &kp GRAVE  &none     &kp N7  &kp N8  &kp N9  &kp PG_UP      &kp LBKT  &kp RBKT    &kp UP     &kp MINUS    &kp EQUAL    &kp DEL
     &kp CAPS  &none     &kp N4  &kp N5  &kp N6  &kp PG_DN      &none  &kp LEFT  &kp DOWN  &kp RIGHT    &kp BSLH
-    &trans   &none     &kp N1  &kp N2  &kp N3  &none    &kp none  &none   &none     &kp DOT    &tog 1
+    &trans   &none     &kp N1  &kp N2  &kp N3  &none    &kp KP_DOT  &none   &none     &none    &tog 1
     &kp LCTRL  &trans  &kp LALT  &kp N0  &trans     &none  &none   &none
                         >;
                 };
