@@ -3,7 +3,7 @@
  */
 
 // 调整鼠标移动的最大速度（默认值通常是 600）
- #define ZMK_POINTING_DEFAULT_MOVE_VAL 800
+ #define ZMK_POINTING_DEFAULT_MOVE_VAL 600
 
 // 调整滚轮滚动的最大速度（默认值通常是 10）
  #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
@@ -38,13 +38,13 @@
     combos {
         compatible = "zmk,combos";
         combo_0 {
-            timeout-ms = <50>; // 按下的时间差需在50ms内
+            timeout-ms = <70>; // 按下的时间差需在70ms内
             key-positions = <12 23 34>; // 键盘上三个键的实际位置编号
             bindings = <&kp LC(LS(ESC))>;
             layers = <0>;
         };
         combo_1 {
-            timeout-ms = <50>; 
+            timeout-ms = <70>; 
             key-positions = <20 38>; 
             bindings = <&mo 3>;
             layers = <0 1>;
@@ -113,13 +113,13 @@
                 layer_4 {
 // -------------------------------------------------------------------------------------
 // |NONE|NONE| SCRL_UP |  R  |SCRL_DN|NONE|NONE|NONE|NONE|NONE|NONE|NONE|
-// |NONE|NONE|  S  |  D  |  F  |NONE|NONE|NONE|NONE|NONE|NONE|
-// |  RCLK |NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|SHIFT|
+// |NONE|NONE|  S  |  D  |  F  |NONE|NONE|NONE|NONE|NONE|ALT＋TAB|
+// |  RCLK |NONE|NONE|copy|paste|NONE|NONE|NONE|NONE|NONE|SHIFT|
 // |NONE|NONE|NONE|  LCLK    |NONE| ALT |    |CTRL|
                         bindings = <
     &none  &none  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOWN  &none        &none  &none  &none  &none  &none  &none
-    &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none        &none  &none  &none  &none  &none
-    &mkp RCLK  &none  &none  &none  &none  &none        &none  &none  &none  &none  &kp LSHIFT
+    &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none        &none  &none  &none  &none  &kp LA(TAB)
+    &mkp RCLK  &none  &none  &kp LC(C) &kp LC(V)  &none        &none  &none  &none  &none  &kp LSHIFT
     &none  &none  &none  &mkp LCLK  &none  &kp LALT  &trans   &kp LCTRL
                         >;
                 };
