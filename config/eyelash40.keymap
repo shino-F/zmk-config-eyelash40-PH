@@ -41,6 +41,12 @@
             bindings = <&mo 3>;
             layers = <0 1>;
         };
+        combo_2 {
+            timeout-ms = <70>; 
+            key-positions = <0 12>; 
+            bindings = <&kp ESC>;
+            layers = <0 1>;
+        };
     };
 
         keymap {
