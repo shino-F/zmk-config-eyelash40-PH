@@ -1,6 +1,6 @@
 if SHIELD_EYELASH40
 
 config ZMK_KEYBOARD_NAME
-    default "Shino_KB"
+    default "EYELASH40"
 endif
 
